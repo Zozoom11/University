@@ -1,6 +1,7 @@
 
 from menu import Menu
 
+
 class Close(Menu):
 
     def close(self):
@@ -10,3 +11,6 @@ class Close(Menu):
                 return Menu.menu(self)
 
 
+
+
+Menu().menu()  

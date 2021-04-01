@@ -1,3 +1,4 @@
+
 import pymysql
 from pymysql.cursors import DictCursor
 
@@ -18,13 +19,29 @@ class DataBase:
         return connection
 
     def addUser(self,name,login,password,status):
-        sql = "INSERT INTO people (name,login,password,status) VALUES (%s, %s, %s, %s)"
+        sql = "INSERT INTO people (name,login,password,status) VALUES (%s, %s, %s, %s) "
         temp = [name,login,password,status]
         self.cursors.execute(sql,temp)
         self.connection.commit()
+        if status == 'Student':
+            sql = "INSERT INTO students (name,login) VALUES ( %s, %s ) "
+            temp = [name,login]
+            self.cursors.execute(sql, temp)
+            self.connection.commit()
 
-    def getUsers(self):
-        sql = "SELECT * FROM users"
+
+    def getUser (self,login):
+        sql = f"SELECT * FROM people WHERE login='{login}'"
         self.cursors.execute(sql)
         data = self.cursors.fetchall()
-        print(data)
+        return data[0]
+
+    def checklogin (self):
+        sql = "SELECT login FROM `people`"
+        self.cursors.execute(sql)
+        data = self.cursors.fetchall()
+        lst = []
+        for i in data:
+            lst.append(i['login'])
+        return lst
+
