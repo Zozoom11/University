@@ -6,9 +6,9 @@ class Menu():
 
     def menu(self):
         while True:
-            choise = int(input("МЕНЮ""\n""1. Authorization""\n"
-                               "2. Reqistration""\n"
-                               "3. close""\n"))
+            choise = int(input("МЕНЮ""\n""1. Авторизация""\n"
+                               "2. Регистрация""\n"
+                               "3. Выход""\n"))
 
             if choise == 2:
                 return Registration().registration()
@@ -16,8 +16,11 @@ class Menu():
             if choise == 1:
                 return Authorization().authorization()
 
+            if choise == 3:
+                break
 
 
+Menu().menu()
 
 
 

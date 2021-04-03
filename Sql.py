@@ -36,12 +36,31 @@ class DataBase:
         data = self.cursors.fetchall()
         return data[0]
 
-    def checklogin (self):
-        sql = "SELECT login FROM `people`"
+    def check_login (self):
+        sql = "SELECT login FROM people"
         self.cursors.execute(sql)
         data = self.cursors.fetchall()
         lst = []
         for i in data:
             lst.append(i['login'])
         return lst
+
+    def check_mark (self, login):
+        sql = f"SELECT Mатематика, Физика, Биология, Русский, Информатика FROM students WHERE login='{login}'"
+        self.cursors.execute(sql)
+        data = self.cursors.fetchall()
+        return data[0]
+
+    def check_kurs(self,login):
+        sql = f"SELECT Курс FROM students WHERE login='{login}'"
+        self.cursors.execute(sql)
+        data = self.cursors.fetchall()
+        return data[0]
+
+    def check_initials(self,login):
+        sql = f"SELECT ФИО FROM students WHERE login='{login}'"
+        self.cursors.execute(sql)
+        data = self.cursors.fetchall()
+        return data[0]
+
 
