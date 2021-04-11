@@ -51,6 +51,7 @@ class DataBase:
         data = self.cursors.fetchall()
         return data[0]
 
+
     def check_kurs (self,login):
         sql = f"SELECT Курс FROM students WHERE login='{login}'"
         self.cursors.execute(sql)

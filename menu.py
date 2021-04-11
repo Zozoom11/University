@@ -11,10 +11,14 @@ class Menu():
                                "3. Выход""\n"))
 
             if choise == 2:
-                return Registration().registration()
+                Registration().registration()
+
 
             if choise == 1:
-                return Authorization().authorization()
+                Authorization().authorization()
+
+
+
 
             if choise == 3:
                 break
